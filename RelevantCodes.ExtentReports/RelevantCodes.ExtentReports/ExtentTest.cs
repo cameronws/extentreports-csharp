@@ -65,11 +65,11 @@ namespace RelevantCodes.ExtentReports
         /// <param name="Status">Status</param>
         /// <param name="StepName">Name of the step</param>
         /// <param name="Details">Details of the step</param>
-        public void Log(LogStatus Status, string StepName, string Details)
+        public void Log(LogStatus Status, string StepName, string Details, DateTime Timestamp = DateTime.Now)
         {
             var log = new Log();
 
-            log.Timestamp = DateTime.Now; 
+            log.Timestamp = Timestamp; 
             log.LogStatus = Status;
             log.StepName = StepName;
             log.Details = Details;
@@ -100,9 +100,9 @@ namespace RelevantCodes.ExtentReports
         /// 
         /// <param name="Status">Status</param>
         /// <param name="Details">Details of the step</param>
-        public void Log(LogStatus Status, string Details)
+        public void Log(LogStatus Status, string Details, DateTime Timestamp = DateTime.Now)
         {
-            Log(Status, null, Details);
+            Log(Status, null, Details, Timestamp);
         }
 
         /// <summary>
@@ -126,9 +126,9 @@ namespace RelevantCodes.ExtentReports
         /// <param name="Status">Status</param>
         /// <param name="StepName">Name of the step</param>
         /// <param name="Exception">Exception</param>
-        public void Log(LogStatus Status, Exception Exception)
+        public void Log(LogStatus Status, Exception Exception, DateTime Timestamp = DateTime.Now)
         {
-            Log(Status, null, Exception);
+            Log(Status, null, Exception, Timestamp);
         }
 
         /// <summary>
@@ -155,14 +155,14 @@ namespace RelevantCodes.ExtentReports
         /// <param name="Status">Status</param>
         /// <param name="StepName">Name of the step</param>
         /// <param name="Exception">Exception</param>
-        public void Log(LogStatus Status, string StepName, Exception Exception)
+        public void Log(LogStatus Status, string StepName, Exception Exception, DateTime Timestamp = DateTime.Now)
         {
             var exceptionInfo = new ExceptionInfo(GetTest(), Exception);
             GetTest().ExceptionList.Add(exceptionInfo);
 
             string details = string.Format("<pre>{0}</pre>", Exception.ToString());
 
-            Log(Status, StepName, details);
+            Log(Status, StepName, details, Timestamp);
         }
 
         /// <summary>
