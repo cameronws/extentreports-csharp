@@ -6,11 +6,19 @@ namespace RelevantCodes.ExtentReports
     {
 	    void Log(LogStatus Status, string StepName, string Details);
 
-	    void Log(LogStatus Status, string Details);
+	    void Log(LogStatus Status, string StepName, string Details, DateTime Timestamp);
 
-	    void Log(LogStatus Status, string StepName, Exception Ex);
+        void Log(LogStatus Status, string Details);
 
-	    void Log(LogStatus Status, Exception Ex);
+        void Log(LogStatus Status, string Details, DateTime Timestamp);
+
+        void Log(LogStatus Status, string StepName, Exception Ex);
+
+        void Log(LogStatus Status, string StepName, Exception Ex, DateTime Timestamp);
+
+        void Log(LogStatus Status, Exception Ex);
+
+        void Log(LogStatus Status, Exception Ex, DateTime Timestamp);
 
 	    string AddScreenCapture(string ImgPath);
 
