@@ -65,11 +65,15 @@ namespace RelevantCodes.ExtentReports
         /// <param name="Status">Status</param>
         /// <param name="StepName">Name of the step</param>
         /// <param name="Details">Details of the step</param>
-        public void Log(LogStatus Status, string StepName, string Details, DateTime Timestamp = DateTime.Now)
+        public void Log(LogStatus Status, string StepName, string Details)
+        {
+            Log(Status, StepName, Description, DateTime.Now);
+        }
+        public void Log(LogStatus Status, string StepName, string Details, DateTime Timestamp)
         {
             var log = new Log();
 
-            log.Timestamp = Timestamp; 
+            log.Timestamp = Timestamp;
             log.LogStatus = Status;
             log.StepName = StepName;
             log.Details = Details;
@@ -100,7 +104,11 @@ namespace RelevantCodes.ExtentReports
         /// 
         /// <param name="Status">Status</param>
         /// <param name="Details">Details of the step</param>
-        public void Log(LogStatus Status, string Details, DateTime Timestamp = DateTime.Now)
+        public void Log(LogStatus Status, string Details)
+        {
+            Log(Status, null, Details);
+        }
+        public void Log(LogStatus Status, string Details, DateTime Timestamp)
         {
             Log(Status, null, Details, Timestamp);
         }
@@ -126,7 +134,11 @@ namespace RelevantCodes.ExtentReports
         /// <param name="Status">Status</param>
         /// <param name="StepName">Name of the step</param>
         /// <param name="Exception">Exception</param>
-        public void Log(LogStatus Status, Exception Exception, DateTime Timestamp = DateTime.Now)
+        public void Log(LogStatus Status, Exception Exception)
+        {
+            Log(Status, null, Exception);
+        }
+        public void Log(LogStatus Status, Exception Exception, DateTime Timestamp)
         {
             Log(Status, null, Exception, Timestamp);
         }
@@ -155,7 +167,11 @@ namespace RelevantCodes.ExtentReports
         /// <param name="Status">Status</param>
         /// <param name="StepName">Name of the step</param>
         /// <param name="Exception">Exception</param>
-        public void Log(LogStatus Status, string StepName, Exception Exception, DateTime Timestamp = DateTime.Now)
+        public void Log(LogStatus Status, string StepName, Exception Exception)
+        {
+            Log(Status, StepName, Exception, DateTime.Now);
+        }
+        public void Log(LogStatus Status, string StepName, Exception Exception, DateTime Timestamp)
         {
             var exceptionInfo = new ExceptionInfo(GetTest(), Exception);
             GetTest().ExceptionList.Add(exceptionInfo);
